@@ -1,6 +1,6 @@
 import pika
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+connection = pika.BlockingConnection(pika.ConnectionParameters("localhost"))
 channel = connection.channel()
 
 # make sure the queue exists
@@ -107,11 +107,11 @@ msg2 = """
 }
 """
 
-msg3 = b'KLUv/WBKBG0ZAGY6oiQgcfPz+dDtfD+G23+SkmbXk4kFHsYmS1lShET6+F8NAQQB5AGgAKkAiQCOQxQKV576R/+8Pw9HJkdPifzjTAp9fXh+rWyJCFT+UqsTUcjy9Hl+Ui++Riz6J80IdDCU/sbzXGb3pQJUmAJUHAzKDYyEa33KhBHYXUbAvEN9iTiq7kQqF8pwEDBVQjnDoi1U0jgWlW+Wmm97JunmN+lJ2MSFr/HtbyB/jDGtReWIEWDWNmsrsZjYNdGtbNyUrIGTX9O6fb/4DAHjDsMR0fn7NKeKkKeXiCsSByJGCKlPHYtGwkQE5CNGiC6eRhgUXVhBBUSVC9TN3w4G/SoZoLAzsCxgg0bVkTyFPOxElfenB07tXihcUwYMEI0BxEPDFhwcFiCUSeRQSPIYNAuNRIFUzu3falSD6m2TdlNTqx6PR1OduvFwhRuM9+abXqBq+fcHBeqB6lj4HwkESQZewhSK6uNBUC1RNGH6KyQU4Yg9wjTSeHd2Zs45fMx9k65ji4yxSoy1dc1sv189Bn/G5smf2WTvfVpv2L688ZrL3/Ndd/xKOufmHmPonvv569Va6bygWidXOVu5Ma2arbG5Sv1Lz5l9LW5MJgVZ6k5pbnuMydt/5OcX3UxypZVLrf4XJ/znsJtj67nluuM3fG9l4sRxRneTn2MyJtbsolRxJW4BHUvA1HdoxEQVmkAqfedn8O/Ucc7Z0DlK2Erx7GUp56vW831UKnpqSi5c66rbcuwyuYeMP6Ynl2qPoVpeG3uu15SCcpPqpl7yW/BZ9P5NzLUZZXzWul8u9zIo/fGqdethO0tPDrbo5mtuyukik+2twTndPZUWR7kmbHBJ99p9ny+4PK6XXMGXpCdWAUUoIELDKDMPcnTQMMoqsqX1f4sBphNSawiFsxkvVeMxIc0r/p2N4QUVCMYUX6C6f6tAhRVpsqj7BOEGwzVoT9zJSzjWNMKDaSAYsfYFwvoTAxLokE8gyQzYdCyW7R2Rj7pXPfIPilcOMrxst3xgCl6WPn0CaI1pFBm0+5s2ae+f4eGl9SkrclvMrB83GPTO/9jwq23rzBV8T245sLxXJObMHg=='
+msg3 = b"KLUv/WBKBG0ZAGY6oiQgcfPz+dDtfD+G23+SkmbXk4kFHsYmS1lShET6+F8NAQQB5AGgAKkAiQCOQxQKV576R/+8Pw9HJkdPifzjTAp9fXh+rWyJCFT+UqsTUcjy9Hl+Ui++Riz6J80IdDCU/sbzXGb3pQJUmAJUHAzKDYyEa33KhBHYXUbAvEN9iTiq7kQqF8pwEDBVQjnDoi1U0jgWlW+Wmm97JunmN+lJ2MSFr/HtbyB/jDGtReWIEWDWNmsrsZjYNdGtbNyUrIGTX9O6fb/4DAHjDsMR0fn7NKeKkKeXiCsSByJGCKlPHYtGwkQE5CNGiC6eRhgUXVhBBUSVC9TN3w4G/SoZoLAzsCxgg0bVkTyFPOxElfenB07tXihcUwYMEI0BxEPDFhwcFiCUSeRQSPIYNAuNRIFUzu3falSD6m2TdlNTqx6PR1OduvFwhRuM9+abXqBq+fcHBeqB6lj4HwkESQZewhSK6uNBUC1RNGH6KyQU4Yg9wjTSeHd2Zs45fMx9k65ji4yxSoy1dc1sv189Bn/G5smf2WTvfVpv2L688ZrL3/Ndd/xKOufmHmPonvv569Va6bygWidXOVu5Ma2arbG5Sv1Lz5l9LW5MJgVZ6k5pbnuMydt/5OcX3UxypZVLrf4XJ/znsJtj67nluuM3fG9l4sRxRneTn2MyJtbsolRxJW4BHUvA1HdoxEQVmkAqfedn8O/Ucc7Z0DlK2Erx7GUp56vW831UKnpqSi5c66rbcuwyuYeMP6Ynl2qPoVpeG3uu15SCcpPqpl7yW/BZ9P5NzLUZZXzWul8u9zIo/fGqdethO0tPDrbo5mtuyukik+2twTndPZUWR7kmbHBJ99p9ny+4PK6XXMGXpCdWAUUoIELDKDMPcnTQMMoqsqX1f4sBphNSawiFsxkvVeMxIc0r/p2N4QUVCMYUX6C6f6tAhRVpsqj7BOEGwzVoT9zJSzjWNMKDaSAYsfYFwvoTAxLokE8gyQzYdCyW7R2Rj7pXPfIPilcOMrxst3xgCl6WPn0CaI1pFBm0+5s2ae+f4eGl9SkrclvMrB83GPTO/9jwq23rzBV8T245sLxXJObMHg=="
 # for i in range(10):
-channel.basic_publish(exchange='',
-                      routing_key='enki-tmp-q-default-session-id',
-                      body=msg3)
+channel.basic_publish(
+    exchange="", routing_key="enki-tmp-q-default-session-id", body=msg3
+)
 print(f" [x] sent 'message'")
 
 connection.close()
