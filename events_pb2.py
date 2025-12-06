@@ -9,13 +9,9 @@ from google.protobuf import descriptor_pool as _descriptor_pool
 from google.protobuf import runtime_version as _runtime_version
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf.internal import builder as _builder
+
 _runtime_version.ValidateProtobufRuntimeVersion(
-    _runtime_version.Domain.PUBLIC,
-    6,
-    31,
-    0,
-    '',
-    'events.proto'
+    _runtime_version.Domain.PUBLIC, 6, 31, 0, "", "events.proto"
 )
 # @@protoc_insertion_point(imports)
 
@@ -25,48 +21,52 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0c\x65vents.proto\x12\x06\x65vents\x1a\x1fgoogle/protobuf/timestamp.proto\"\x0f\n\rStreamRequest\"\xba\x01\n\x05\x45vent\x12\x0c\n\x04type\x18\x01 \x01(\t\x12 \n\x06review\x18\x02 \x01(\x0b\x32\x0e.events.ReviewH\x00\x12&\n\tlogstream\x18\x03 \x01(\x0b\x32\x11.events.LogstreamH\x00\x12\"\n\x05\x65rror\x18\x04 \x01(\x0b\x32\x11.events.ErrorDataH\x00\x12-\n\ttimestamp\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x06\n\x04\x64\x61ta\"\'\n\x06Review\x12\x1d\n\x06issues\x18\x01 \x03(\x0b\x32\r.events.Issue\"\x9e\x01\n\x05Issue\x12\x19\n\x11short_explanation\x18\x01 \x01(\t\x12\x18\n\x10long_explanation\x18\x02 \x01(\t\x12,\n\x0e\x66ile_locations\x18\x03 \x03(\x0b\x32\x14.events.FileLocation\x12\x11\n\tfix_steps\x18\x04 \x01(\t\x12\x1f\n\x04type\x18\x05 \x01(\x0e\x32\x11.events.IssueType\"B\n\x0c\x46ileLocation\x12\x0c\n\x04\x66ile\x18\x01 \x01(\t\x12\x12\n\nstart_line\x18\x02 \x01(\x05\x12\x10\n\x08\x65nd_line\x18\x03 \x01(\x05\"@\n\nFixRequest\x12\x1c\n\x05issue\x18\x01 \x01(\x0b\x32\r.events.Issue\x12\x14\n\x0cuser_comment\x18\x02 \x01(\t\"Q\n\x0b\x46ixResponse\x12\x19\n\x11short_explanation\x18\x01 \x01(\t\x12\x18\n\x10long_explanation\x18\x02 \x01(\t\x12\r\n\x05patch\x18\x03 \x01(\t\"d\n\tLogstream\x12\x0c\n\x04guid\x18\x01 \x01(\t\x12%\n\x05level\x18\x02 \x01(\x0e\x32\x16.events.LogstreamLevel\x12\x0f\n\x07message\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\t\";\n\tErrorData\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65tails\x18\x03 \x01(\t\"\xa0\x02\n\x14\x46ixDecisionTelemetry\x12\x1c\n\x05issue\x18\x01 \x01(\x0b\x32\r.events.Issue\x12)\n\x08\x64\x65\x63ision\x18\x02 \x01(\x0e\x32\x17.events.FixDecisionType\x12\x15\n\ruser_feedback\x18\x03 \x01(\t\x12*\n\rfile_contexts\x18\x04 \x03(\x0b\x32\x13.events.FileContext\x12\x12\n\nrepository\x18\x05 \x01(\t\x12\x18\n\x10\x62\x61se_commit_hash\x18\x06 \x01(\t\x12\x1f\n\x17has_uncommitted_changes\x18\x07 \x01(\x08\x12-\n\ttimestamp\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\\\n\x0b\x46ileContext\x12\x11\n\tfile_path\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12)\n\x0e\x61\x66\x66\x65\x63ted_lines\x18\x03 \x03(\x0b\x32\x11.events.LineRange\"1\n\tLineRange\x12\x12\n\nstart_line\x18\x01 \x01(\x05\x12\x10\n\x08\x65nd_line\x18\x02 \x01(\x05\"$\n\x11TelemetryResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08*5\n\tIssueType\x12\x0e\n\nDEPENDENCY\x10\x00\x12\x0c\n\x08SECURITY\x10\x01\x12\n\n\x06SECRET\x10\x02*=\n\x0eLogstreamLevel\x12\x08\n\x04INFO\x10\x00\x12\x0b\n\x07WARNING\x10\x01\x12\t\n\x05\x45RROR\x10\x02\x12\t\n\x05\x44\x45\x42UG\x10\x03*>\n\x0f\x46ixDecisionType\x12\n\n\x06\x41\x43\x43\x45PT\x10\x00\x12\n\n\x06REJECT\x10\x01\x12\x13\n\x0fREQUEST_CHANGES\x10\x02\x32}\n\x0c\x45ventService\x12\x36\n\x0cStreamEvents\x12\x15.events.StreamRequest\x1a\r.events.Event0\x01\x12\x35\n\nRequestFix\x12\x12.events.FixRequest\x1a\x13.events.FixResponse2`\n\x10TelemetryService\x12L\n\x11RecordFixDecision\x12\x1c.events.FixDecisionTelemetry\x1a\x19.events.TelemetryResponseB\'Z%github.com/DeepSourceCorp/fjord/protob\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(
+    b'\n\x0c\x65vents.proto\x12\x06\x65vents\x1a\x1fgoogle/protobuf/timestamp.proto"\x0f\n\rStreamRequest"\xba\x01\n\x05\x45vent\x12\x0c\n\x04type\x18\x01 \x01(\t\x12 \n\x06review\x18\x02 \x01(\x0b\x32\x0e.events.ReviewH\x00\x12&\n\tlogstream\x18\x03 \x01(\x0b\x32\x11.events.LogstreamH\x00\x12"\n\x05\x65rror\x18\x04 \x01(\x0b\x32\x11.events.ErrorDataH\x00\x12-\n\ttimestamp\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x06\n\x04\x64\x61ta"\'\n\x06Review\x12\x1d\n\x06issues\x18\x01 \x03(\x0b\x32\r.events.Issue"\x9e\x01\n\x05Issue\x12\x19\n\x11short_explanation\x18\x01 \x01(\t\x12\x18\n\x10long_explanation\x18\x02 \x01(\t\x12,\n\x0e\x66ile_locations\x18\x03 \x03(\x0b\x32\x14.events.FileLocation\x12\x11\n\tfix_steps\x18\x04 \x01(\t\x12\x1f\n\x04type\x18\x05 \x01(\x0e\x32\x11.events.IssueType"B\n\x0c\x46ileLocation\x12\x0c\n\x04\x66ile\x18\x01 \x01(\t\x12\x12\n\nstart_line\x18\x02 \x01(\x05\x12\x10\n\x08\x65nd_line\x18\x03 \x01(\x05"@\n\nFixRequest\x12\x1c\n\x05issue\x18\x01 \x01(\x0b\x32\r.events.Issue\x12\x14\n\x0cuser_comment\x18\x02 \x01(\t"Q\n\x0b\x46ixResponse\x12\x19\n\x11short_explanation\x18\x01 \x01(\t\x12\x18\n\x10long_explanation\x18\x02 \x01(\t\x12\r\n\x05patch\x18\x03 \x01(\t"d\n\tLogstream\x12\x0c\n\x04guid\x18\x01 \x01(\t\x12%\n\x05level\x18\x02 \x01(\x0e\x32\x16.events.LogstreamLevel\x12\x0f\n\x07message\x18\x03 \x01(\t\x12\x11\n\ttimestamp\x18\x04 \x01(\t";\n\tErrorData\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x0c\n\x04\x63ode\x18\x02 \x01(\t\x12\x0f\n\x07\x64\x65tails\x18\x03 \x01(\t"\xa0\x02\n\x14\x46ixDecisionTelemetry\x12\x1c\n\x05issue\x18\x01 \x01(\x0b\x32\r.events.Issue\x12)\n\x08\x64\x65\x63ision\x18\x02 \x01(\x0e\x32\x17.events.FixDecisionType\x12\x15\n\ruser_feedback\x18\x03 \x01(\t\x12*\n\rfile_contexts\x18\x04 \x03(\x0b\x32\x13.events.FileContext\x12\x12\n\nrepository\x18\x05 \x01(\t\x12\x18\n\x10\x62\x61se_commit_hash\x18\x06 \x01(\t\x12\x1f\n\x17has_uncommitted_changes\x18\x07 \x01(\x08\x12-\n\ttimestamp\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp"\\\n\x0b\x46ileContext\x12\x11\n\tfile_path\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\t\x12)\n\x0e\x61\x66\x66\x65\x63ted_lines\x18\x03 \x03(\x0b\x32\x11.events.LineRange"1\n\tLineRange\x12\x12\n\nstart_line\x18\x01 \x01(\x05\x12\x10\n\x08\x65nd_line\x18\x02 \x01(\x05"$\n\x11TelemetryResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08*5\n\tIssueType\x12\x0e\n\nDEPENDENCY\x10\x00\x12\x0c\n\x08SECURITY\x10\x01\x12\n\n\x06SECRET\x10\x02*=\n\x0eLogstreamLevel\x12\x08\n\x04INFO\x10\x00\x12\x0b\n\x07WARNING\x10\x01\x12\t\n\x05\x45RROR\x10\x02\x12\t\n\x05\x44\x45\x42UG\x10\x03*>\n\x0f\x46ixDecisionType\x12\n\n\x06\x41\x43\x43\x45PT\x10\x00\x12\n\n\x06REJECT\x10\x01\x12\x13\n\x0fREQUEST_CHANGES\x10\x02\x32}\n\x0c\x45ventService\x12\x36\n\x0cStreamEvents\x12\x15.events.StreamRequest\x1a\r.events.Event0\x01\x12\x35\n\nRequestFix\x12\x12.events.FixRequest\x1a\x13.events.FixResponse2`\n\x10TelemetryService\x12L\n\x11RecordFixDecision\x12\x1c.events.FixDecisionTelemetry\x1a\x19.events.TelemetryResponseB\'Z%github.com/DeepSourceCorp/fjord/protob\x06proto3'
+)
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'events_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, "events_pb2", _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
-  _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z%github.com/DeepSourceCorp/fjord/proto'
-  _globals['_ISSUETYPE']._serialized_start=1319
-  _globals['_ISSUETYPE']._serialized_end=1372
-  _globals['_LOGSTREAMLEVEL']._serialized_start=1374
-  _globals['_LOGSTREAMLEVEL']._serialized_end=1435
-  _globals['_FIXDECISIONTYPE']._serialized_start=1437
-  _globals['_FIXDECISIONTYPE']._serialized_end=1499
-  _globals['_STREAMREQUEST']._serialized_start=57
-  _globals['_STREAMREQUEST']._serialized_end=72
-  _globals['_EVENT']._serialized_start=75
-  _globals['_EVENT']._serialized_end=261
-  _globals['_REVIEW']._serialized_start=263
-  _globals['_REVIEW']._serialized_end=302
-  _globals['_ISSUE']._serialized_start=305
-  _globals['_ISSUE']._serialized_end=463
-  _globals['_FILELOCATION']._serialized_start=465
-  _globals['_FILELOCATION']._serialized_end=531
-  _globals['_FIXREQUEST']._serialized_start=533
-  _globals['_FIXREQUEST']._serialized_end=597
-  _globals['_FIXRESPONSE']._serialized_start=599
-  _globals['_FIXRESPONSE']._serialized_end=680
-  _globals['_LOGSTREAM']._serialized_start=682
-  _globals['_LOGSTREAM']._serialized_end=782
-  _globals['_ERRORDATA']._serialized_start=784
-  _globals['_ERRORDATA']._serialized_end=843
-  _globals['_FIXDECISIONTELEMETRY']._serialized_start=846
-  _globals['_FIXDECISIONTELEMETRY']._serialized_end=1134
-  _globals['_FILECONTEXT']._serialized_start=1136
-  _globals['_FILECONTEXT']._serialized_end=1228
-  _globals['_LINERANGE']._serialized_start=1230
-  _globals['_LINERANGE']._serialized_end=1279
-  _globals['_TELEMETRYRESPONSE']._serialized_start=1281
-  _globals['_TELEMETRYRESPONSE']._serialized_end=1317
-  _globals['_EVENTSERVICE']._serialized_start=1501
-  _globals['_EVENTSERVICE']._serialized_end=1626
-  _globals['_TELEMETRYSERVICE']._serialized_start=1628
-  _globals['_TELEMETRYSERVICE']._serialized_end=1724
+    _globals["DESCRIPTOR"]._loaded_options = None
+    _globals["DESCRIPTOR"]._serialized_options = (
+        b"Z%github.com/DeepSourceCorp/fjord/proto"
+    )
+    _globals["_ISSUETYPE"]._serialized_start = 1319
+    _globals["_ISSUETYPE"]._serialized_end = 1372
+    _globals["_LOGSTREAMLEVEL"]._serialized_start = 1374
+    _globals["_LOGSTREAMLEVEL"]._serialized_end = 1435
+    _globals["_FIXDECISIONTYPE"]._serialized_start = 1437
+    _globals["_FIXDECISIONTYPE"]._serialized_end = 1499
+    _globals["_STREAMREQUEST"]._serialized_start = 57
+    _globals["_STREAMREQUEST"]._serialized_end = 72
+    _globals["_EVENT"]._serialized_start = 75
+    _globals["_EVENT"]._serialized_end = 261
+    _globals["_REVIEW"]._serialized_start = 263
+    _globals["_REVIEW"]._serialized_end = 302
+    _globals["_ISSUE"]._serialized_start = 305
+    _globals["_ISSUE"]._serialized_end = 463
+    _globals["_FILELOCATION"]._serialized_start = 465
+    _globals["_FILELOCATION"]._serialized_end = 531
+    _globals["_FIXREQUEST"]._serialized_start = 533
+    _globals["_FIXREQUEST"]._serialized_end = 597
+    _globals["_FIXRESPONSE"]._serialized_start = 599
+    _globals["_FIXRESPONSE"]._serialized_end = 680
+    _globals["_LOGSTREAM"]._serialized_start = 682
+    _globals["_LOGSTREAM"]._serialized_end = 782
+    _globals["_ERRORDATA"]._serialized_start = 784
+    _globals["_ERRORDATA"]._serialized_end = 843
+    _globals["_FIXDECISIONTELEMETRY"]._serialized_start = 846
+    _globals["_FIXDECISIONTELEMETRY"]._serialized_end = 1134
+    _globals["_FILECONTEXT"]._serialized_start = 1136
+    _globals["_FILECONTEXT"]._serialized_end = 1228
+    _globals["_LINERANGE"]._serialized_start = 1230
+    _globals["_LINERANGE"]._serialized_end = 1279
+    _globals["_TELEMETRYRESPONSE"]._serialized_start = 1281
+    _globals["_TELEMETRYRESPONSE"]._serialized_end = 1317
+    _globals["_EVENTSERVICE"]._serialized_start = 1501
+    _globals["_EVENTSERVICE"]._serialized_end = 1626
+    _globals["_TELEMETRYSERVICE"]._serialized_start = 1628
+    _globals["_TELEMETRYSERVICE"]._serialized_end = 1724
 # @@protoc_insertion_point(module_scope)

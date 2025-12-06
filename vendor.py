@@ -12,7 +12,7 @@ message_payload = {
         "status": {
             "code": 200,
             "hmessage": "Analysis completed successfully",
-            "err": ""
+            "err": "",
         },
         "check_seq": "cxx",
         "report": {
@@ -24,11 +24,11 @@ message_payload = {
                         "path": "app/models.py",
                         "position": {
                             "begin": {"line": 25, "column": 5},
-                            "end": {"line": 27, "column": 30}
-                        }
+                            "end": {"line": 27, "column": 30},
+                        },
                     },
                     "processed_data": None,
-                    "identifier": "sec-001"
+                    "identifier": "sec-001",
                 }
             ],
             "metrics": None,
@@ -41,17 +41,17 @@ message_payload = {
                 "modified": ["app/models.py"],
                 "added": [],
                 "diff_meta": None,
-                "pr_diff_meta": None
+                "pr_diff_meta": None,
             },
-            "extra_data": None
+            "extra_data": None,
         },
-        "report_object": ""
-    }
+        "report_object": "",
+    },
 }
 
 compressor = zstd.ZstdCompressor()
 json_str = json.dumps(message_payload)
-compressed_body = compressor.compress(json_str.encode('utf-8'))
+compressed_body = compressor.compress(json_str.encode("utf-8"))
 
 connection = pika.BlockingConnection(pika.URLParameters(settings.rmq_url))
 channel = connection.channel()
@@ -59,9 +59,7 @@ channel = connection.channel()
 
 routing_key = f"enki-tmp-q-{settings.session_id}"
 channel.basic_publish(
-    exchange=settings.rmq_exchange,
-    routing_key=routing_key,
-    body=compressed_body
+    exchange=settings.rmq_exchange, routing_key=routing_key, body=compressed_body
 )
 
 print(f"Compressed message published to {routing_key}")

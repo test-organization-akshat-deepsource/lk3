@@ -5,23 +5,26 @@ import warnings
 
 import events_pb2 as events__pb2
 
-GRPC_GENERATED_VERSION = '1.73.1'
+GRPC_GENERATED_VERSION = "1.73.1"
 GRPC_VERSION = grpc.__version__
 _version_not_supported = False
 
 try:
     from grpc._utilities import first_version_is_lower
-    _version_not_supported = first_version_is_lower(GRPC_VERSION, GRPC_GENERATED_VERSION)
+
+    _version_not_supported = first_version_is_lower(
+        GRPC_VERSION, GRPC_GENERATED_VERSION
+    )
 except ImportError:
     _version_not_supported = True
 
 if _version_not_supported:
     raise RuntimeError(
-        f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in events_pb2_grpc.py depends on'
-        + f' grpcio>={GRPC_GENERATED_VERSION}.'
-        + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
-        + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
+        f"The grpc package installed is at version {GRPC_VERSION},"
+        + f" but the generated code in events_pb2_grpc.py depends on"
+        + f" grpcio>={GRPC_GENERATED_VERSION}."
+        + f" Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}"
+        + f" or downgrade your generated code using grpcio-tools<={GRPC_VERSION}."
     )
 
 
@@ -35,15 +38,17 @@ class EventServiceStub(object):
             channel: A grpc.Channel.
         """
         self.StreamEvents = channel.unary_stream(
-                '/events.EventService/StreamEvents',
-                request_serializer=events__pb2.StreamRequest.SerializeToString,
-                response_deserializer=events__pb2.Event.FromString,
-                _registered_method=True)
+            "/events.EventService/StreamEvents",
+            request_serializer=events__pb2.StreamRequest.SerializeToString,
+            response_deserializer=events__pb2.Event.FromString,
+            _registered_method=True,
+        )
         self.RequestFix = channel.unary_unary(
-                '/events.EventService/RequestFix',
-                request_serializer=events__pb2.FixRequest.SerializeToString,
-                response_deserializer=events__pb2.FixResponse.FromString,
-                _registered_method=True)
+            "/events.EventService/RequestFix",
+            request_serializer=events__pb2.FixRequest.SerializeToString,
+            response_deserializer=events__pb2.FixResponse.FromString,
+            _registered_method=True,
+        )
 
 
 class EventServiceServicer(object):
@@ -52,54 +57,57 @@ class EventServiceServicer(object):
     def StreamEvents(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def RequestFix(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
 
 def add_EventServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'StreamEvents': grpc.unary_stream_rpc_method_handler(
-                    servicer.StreamEvents,
-                    request_deserializer=events__pb2.StreamRequest.FromString,
-                    response_serializer=events__pb2.Event.SerializeToString,
-            ),
-            'RequestFix': grpc.unary_unary_rpc_method_handler(
-                    servicer.RequestFix,
-                    request_deserializer=events__pb2.FixRequest.FromString,
-                    response_serializer=events__pb2.FixResponse.SerializeToString,
-            ),
+        "StreamEvents": grpc.unary_stream_rpc_method_handler(
+            servicer.StreamEvents,
+            request_deserializer=events__pb2.StreamRequest.FromString,
+            response_serializer=events__pb2.Event.SerializeToString,
+        ),
+        "RequestFix": grpc.unary_unary_rpc_method_handler(
+            servicer.RequestFix,
+            request_deserializer=events__pb2.FixRequest.FromString,
+            response_serializer=events__pb2.FixResponse.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'events.EventService', rpc_method_handlers)
+        "events.EventService", rpc_method_handlers
+    )
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('events.EventService', rpc_method_handlers)
+    server.add_registered_method_handlers("events.EventService", rpc_method_handlers)
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class EventService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def StreamEvents(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+    def StreamEvents(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
         return grpc.experimental.unary_stream(
             request,
             target,
-            '/events.EventService/StreamEvents',
+            "/events.EventService/StreamEvents",
             events__pb2.StreamRequest.SerializeToString,
             events__pb2.Event.FromString,
             options,
@@ -110,23 +118,26 @@ class EventService(object):
             wait_for_ready,
             timeout,
             metadata,
-            _registered_method=True)
+            _registered_method=True,
+        )
 
     @staticmethod
-    def RequestFix(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+    def RequestFix(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/events.EventService/RequestFix',
+            "/events.EventService/RequestFix",
             events__pb2.FixRequest.SerializeToString,
             events__pb2.FixResponse.FromString,
             options,
@@ -137,7 +148,8 @@ class EventService(object):
             wait_for_ready,
             timeout,
             metadata,
-            _registered_method=True)
+            _registered_method=True,
+        )
 
 
 class TelemetryServiceStub(object):
@@ -150,10 +162,11 @@ class TelemetryServiceStub(object):
             channel: A grpc.Channel.
         """
         self.RecordFixDecision = channel.unary_unary(
-                '/events.TelemetryService/RecordFixDecision',
-                request_serializer=events__pb2.FixDecisionTelemetry.SerializeToString,
-                response_deserializer=events__pb2.TelemetryResponse.FromString,
-                _registered_method=True)
+            "/events.TelemetryService/RecordFixDecision",
+            request_serializer=events__pb2.FixDecisionTelemetry.SerializeToString,
+            response_deserializer=events__pb2.TelemetryResponse.FromString,
+            _registered_method=True,
+        )
 
 
 class TelemetryServiceServicer(object):
@@ -162,43 +175,48 @@ class TelemetryServiceServicer(object):
     def RecordFixDecision(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
 
 def add_TelemetryServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'RecordFixDecision': grpc.unary_unary_rpc_method_handler(
-                    servicer.RecordFixDecision,
-                    request_deserializer=events__pb2.FixDecisionTelemetry.FromString,
-                    response_serializer=events__pb2.TelemetryResponse.SerializeToString,
-            ),
+        "RecordFixDecision": grpc.unary_unary_rpc_method_handler(
+            servicer.RecordFixDecision,
+            request_deserializer=events__pb2.FixDecisionTelemetry.FromString,
+            response_serializer=events__pb2.TelemetryResponse.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'events.TelemetryService', rpc_method_handlers)
+        "events.TelemetryService", rpc_method_handlers
+    )
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('events.TelemetryService', rpc_method_handlers)
+    server.add_registered_method_handlers(
+        "events.TelemetryService", rpc_method_handlers
+    )
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class TelemetryService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def RecordFixDecision(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
+    def RecordFixDecision(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        insecure=False,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/events.TelemetryService/RecordFixDecision',
+            "/events.TelemetryService/RecordFixDecision",
             events__pb2.FixDecisionTelemetry.SerializeToString,
             events__pb2.TelemetryResponse.FromString,
             options,
@@ -209,4 +227,5 @@ class TelemetryService(object):
             wait_for_ready,
             timeout,
             metadata,
-            _registered_method=True)
+            _registered_method=True,
+        )
